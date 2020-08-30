@@ -1,3 +1,5 @@
 rewference :
  https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-ubuntu-18-04
 
+to delete the nodes from cluster:
+ https://stackoverflow.com/questions/35757620/how-to-gracefully-remove-a-node-from-kubernetes
