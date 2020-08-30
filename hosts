@@ -1,0 +1,8 @@
+[masters]
+ip-172-31-8-28.ap-south-1.compute.internal ansible_host=ip-172-31-8-28.ap-south-1.compute.internal ansible_user=root
+
+[workers]
+ip-172-31-44-114.ap-south-1.compute.internal ansible_host=ip-172-31-44-114.ap-south-1.compute.internal ansible_user=root
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
