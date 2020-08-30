@@ -1,3 +1,6 @@
+kubectl delete -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+kubectl delete -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+
 kubeadm reset --ignore-preflight-errors all
 
 The reset process does not clean CNI configuration. To do so, you must remove /etc/cni/net.d
