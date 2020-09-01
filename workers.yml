@@ -14,7 +14,6 @@
 
 - hosts: workers
   become: yes
-  become_user: ubuntu
   tasks:
     - set_fact:
         kubeadmjoin: |
@@ -24,7 +23,6 @@
     - debug:
         msg: "{{  kubeadmjoin | trim }} "  
     - name: join cluster
-      become: yes
       shell: "{{ kubeadmjoin | trim }} >> node_joined.txt"
       args:
         chdir: $HOME
