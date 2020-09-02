@@ -1,5 +1,4 @@
 - hosts: all
-  become: yes
   tasks:
    - name: install Docker
      apt:
@@ -41,7 +40,6 @@
        state: present
 
 - hosts: master
-  become: yes
   tasks:
    - name: install kubectl
      apt:
