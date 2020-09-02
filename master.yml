@@ -1,5 +1,4 @@
 - hosts: master
-  become: yes
   tasks:
     - name: initialize the cluster
       shell: kubeadm init  >> cluster_initialized.txt
@@ -8,7 +7,6 @@
         creates: cluster_initialized.txt
 
     - name: create .kube directory
-      become: yes
       become_user: ubuntu
       file:
         path: $HOME/.kube
@@ -23,17 +21,13 @@
         owner: ubuntu
 
     - name: Install the Tigera Calico operator and custom resource definitions
-      become: yes
-      become_user: ubuntu
-      shell: kubectl apply -f kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml >> pod_network_setup.txt
+      shell: kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml >> pod_network_setup.txt
       args:
         chdir: $HOME
         creates: pod_network_setup.txt
     
     - name: Install Calico by creating the necessary custom resource #https://docs.projectcalico.org/getting-started/kubernetes/quickstart
-      become: yes
-      become_user: ubuntu
-      shell: kubectl apply -f kubectl create -f kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml >> pod_network_setup.txt
+      shell: kubectl create -f kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml >> pod_network_setup.txt
       args:
         chdir: $HOME
         creates: pod_network_setup.txt
