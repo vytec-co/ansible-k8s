@@ -1,5 +1,4 @@
 - hosts: master
-  become: yes
   gather_facts: false
   tasks:
     - name: get join command
@@ -13,7 +12,6 @@
         msg: "{{ join_command }}"  
 
 - hosts: workers
-  become: yes
   tasks:
     - set_fact:
         kubeadmjoin: |
@@ -23,7 +21,6 @@
     - debug:
         msg: "{{  kubeadmjoin | trim }} "  
     - name: join cluster
-      become: yes
       shell: "{{ kubeadmjoin | trim }} >> node_joined.txt"
       args:
         chdir: $HOME
